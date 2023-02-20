@@ -8,15 +8,16 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
-import frc.robot.commands.ActuatorOut;
+import frc.robot.commands.ActuatorExtend;
 import frc.robot.commands.ActuatorRetract;
-import frc.robot.commands.ActuatorStop;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Actuator;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -33,7 +34,7 @@ public class RobotContainer {
   //instantiate subsystems for the whole robot here 
 
   //code hehe
-  public static XboxController controller = new XboxController(Constants.controllerPort); //instantiate new xbox controller
+  public static CommandXboxController controller = new CommandXboxController(Constants.controllerPort); //instantiate new xbox controller
 
 
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
@@ -43,9 +44,10 @@ public class RobotContainer {
   public final static Actuator m_actuator = new Actuator();
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  private final ActuatorOut m_ActuatorOut = new ActuatorOut(m_actuator);
-  private final ActuatorStop  m_ActuatorStop = new ActuatorStop(m_actuator);
+
+  private final ActuatorExtend m_ActuatorExtend = new ActuatorExtend(m_actuator);
   private final ActuatorRetract m_ActuatorRetract = new ActuatorRetract(m_actuator);
+
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -62,9 +64,10 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     //configure THE BUTTONS
-    new JoystickButton(controller, 2).whileTrue(m_ActuatorOut);
-    new JoystickButton(controller, 3).whileTrue(m_ActuatorRetract);
-    
+    Trigger aButton = controller.a();
+    Trigger bButton = controller.b();
+    aButton.onTrue(m_ActuatorExtend);
+    bButton.onTrue(m_ActuatorRetract);
   }
 
   /**

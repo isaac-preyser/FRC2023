@@ -31,6 +31,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+    
   }
 
   /**
@@ -76,7 +77,8 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when teleop is enabled. */
   @Override
-  public void teleopInit() {}
+  public void teleopInit() {
+  }
 
   /** This function is called periodically during operator control. */
   @Override
@@ -86,6 +88,8 @@ public class Robot extends TimedRobot {
     //boolean armSpeed = RobotContainer.controller.getAButtonPressed();
     RobotContainer.m_driveSubsystem.drive(speed1, speedR);
     RobotContainer.m_driveSubsystem.drive(speed1, speedR);
+    RobotContainer.m_actuator.periodic();
+
     //RobotContainer.m_
   }
 
