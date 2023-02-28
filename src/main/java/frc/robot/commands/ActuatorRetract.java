@@ -14,14 +14,15 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 public class ActuatorRetract extends InstantCommand {
   public ActuatorRetract(Actuator mActuator) {
     // Use addRequirements() here to declare subsystem dependencies.
+    System.out.println("actuator retracted");
+    if(RobotContainer.m_actuator.HandActuatorPos > -1){
+      RobotContainer.m_actuator.HandActuatorPos -= 0.1; 
+     }
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("actuator retracted");
-    if(RobotContainer.m_actuator.ActuatorPos > -1){
-      RobotContainer.m_actuator.ActuatorPos -= 0.1; 
-     }
+
   }
 }

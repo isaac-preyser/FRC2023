@@ -87,7 +87,6 @@ public class Robot extends TimedRobot {
     double speedR = (RobotContainer.controller.getRightX()*-.8)/(Math.abs(speed1)*2+1);
     //boolean armSpeed = RobotContainer.controller.getAButtonPressed();
     RobotContainer.m_driveSubsystem.drive(speed1, speedR);
-    RobotContainer.m_driveSubsystem.drive(speed1, speedR);
     RobotContainer.m_actuator.periodic();
 
     //RobotContainer.m_
@@ -111,9 +110,11 @@ public class Robot extends TimedRobot {
     //double speed = -RobotContainer.controller.getLeftY(); //inverted to put the battery side in the back .. temporary fix here.
     //double turn = RobotContainer.controller.getRightX();
     //RobotContainer.m_driveSubsystem.drive(speed, turn);
-double speed1 = RobotContainer.controller.getLeftY()*.9;
-    double speedR = (RobotContainer.controller.getRightX()*.8)/(Math.abs(speed1)*2+1);
+    double speed1 = RobotContainer.controller.getLeftY()*.9;
+    double speedR = (RobotContainer.controller.getRightX()*-.8)/(Math.abs(speed1)*2+1);
     RobotContainer.m_driveSubsystem.drive(speed1, speedR); 
+    
+    RobotContainer.m_actuator.periodic();
   }
   
   /** This function is called once when the robot is first started up. */

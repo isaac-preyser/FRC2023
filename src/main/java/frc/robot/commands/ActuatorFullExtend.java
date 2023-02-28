@@ -6,22 +6,24 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.Actuator;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class ActuatorFullExtend extends InstantCommand {
-  public ActuatorFullExtend() {
+  public ActuatorFullExtend(Actuator mActuator) {
     // Use addRequirements() here to declare subsystem dependencies.
+    //fully extend the actuators
+    System.out.println("actuator fully extended");
+    if(RobotContainer.m_actuator.HandActuatorPos < 1){
+      RobotContainer.m_actuator.HandActuatorPos = 1;
+      }
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    //fully extend the actuators
-    System.out.println("actuator fully extended");
-    if(RobotContainer.m_actuator.ActuatorPos < 1){
-      RobotContainer.m_actuator.ActuatorPos = 1;
-     }
+
   }
 }

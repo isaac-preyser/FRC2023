@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.commands.ActuatorExtend;
+import frc.robot.commands.ActuatorFullExtend;
+import frc.robot.commands.ActuatorFullRetract;
 import frc.robot.commands.ActuatorRetract;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Actuator;
@@ -34,7 +36,7 @@ public class RobotContainer {
   //instantiate subsystems for the whole robot here 
 
   //code hehe
-  public static CommandXboxController controller = new CommandXboxController(Constants.controllerPort); //instantiate new xbox controller
+  public static XboxController controller = new XboxController(Constants.controllerPort); //instantiate new xbox controller
 
 
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
@@ -47,7 +49,8 @@ public class RobotContainer {
 
   private final ActuatorExtend m_ActuatorExtend = new ActuatorExtend(m_actuator);
   private final ActuatorRetract m_ActuatorRetract = new ActuatorRetract(m_actuator);
-
+  private final ActuatorFullExtend m_ActuatorFullExtend = new ActuatorFullExtend(m_actuator);
+  private final ActuatorFullRetract m_ActuatorFullRetract = new ActuatorFullRetract(m_actuator);
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -64,9 +67,9 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     //configure THE BUTTONS
-    Trigger aButton = controller.a();
-    Trigger bButton = controller.b();
+    Trigger aButton = new JoystickButton(controller, XboxController.Button.kA.value);
     aButton.onTrue(m_ActuatorExtend);
+    Trigger bButton = new JoystickButton(controller, XboxController.Button.kB.value);
     bButton.onTrue(m_ActuatorRetract);
   }
 

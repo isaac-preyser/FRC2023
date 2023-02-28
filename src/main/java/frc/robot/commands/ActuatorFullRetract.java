@@ -11,19 +11,17 @@ import frc.robot.subsystems.Actuator;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class ActuatorExtend extends InstantCommand {
-  public ActuatorExtend(Actuator mActuator) {
+public class ActuatorFullRetract extends InstantCommand {
+  public ActuatorFullRetract(Actuator mActuator) {
     // Use addRequirements() here to declare subsystem dependencies.
-    if(RobotContainer.m_actuator.HandActuatorPos < 1){
-      RobotContainer.m_actuator.HandActuatorPos += 0.1; 
+    //fully extend the actuators
+    System.out.println("actuator fully extended");
+    if(RobotContainer.m_actuator.HandActuatorPos > -1){
+      RobotContainer.m_actuator.HandActuatorPos = -1;
      }
   }
 
-
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    System.out.println("actuator extended");
-
-  }
+  public void initialize() {}
 }
