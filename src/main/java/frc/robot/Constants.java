@@ -28,10 +28,6 @@ public final class Constants {
     public final static int pwmRightBack = 3; 
 
     //actuator ports
-    public final static int pwmActuatorHand = 6;
-    public final static int pwmConveyor = 5;
-    public final static int pwmActuatorArm = 4; 
-
-    
-
+    public final static int pwmBottomLauncher = 4;
+    public final static int pwmTopLauncher = 5;
 }

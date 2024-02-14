@@ -8,14 +8,10 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
-import frc.robot.commands.ActuatorExtend;
-import frc.robot.commands.ActuatorFullExtend;
-import frc.robot.commands.ActuatorFullRetract;
-import frc.robot.commands.ActuatorRetract;
 import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.Actuator;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.LauncherSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -43,15 +39,9 @@ public class RobotContainer {
 
   public final static DriveSubsystem m_driveSubsystem = new DriveSubsystem();
 
-  public final static Actuator m_actuator = new Actuator();
+  public final static LauncherSubsystem m_launcherSubsystem = new LauncherSubsystem();
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-
-  private final ActuatorExtend m_ActuatorExtend = new ActuatorExtend(m_actuator);
-  private final ActuatorRetract m_ActuatorRetract = new ActuatorRetract(m_actuator);
-  private final ActuatorFullExtend m_ActuatorFullExtend = new ActuatorFullExtend(m_actuator);
-  private final ActuatorFullRetract m_ActuatorFullRetract = new ActuatorFullRetract(m_actuator);
-
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -67,10 +57,10 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     //configure THE BUTTONS
-    Trigger aButton = new JoystickButton(controller, XboxController.Button.kA.value);
+    /*Trigger aButton = new JoystickButton(controller, XboxController.Button.kA.value);
     aButton.onTrue(m_ActuatorExtend);
     Trigger bButton = new JoystickButton(controller, XboxController.Button.kB.value);
-    bButton.onTrue(m_ActuatorRetract);
+    bButton.onTrue(m_ActuatorRetract);*/
   }
 
   /**

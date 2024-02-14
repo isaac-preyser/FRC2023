@@ -78,6 +78,7 @@ public class Robot extends TimedRobot {
   /** This function is called once when teleop is enabled. */
   @Override
   public void teleopInit() {
+
   }
 
   /** This function is called periodically during operator control. */
@@ -87,11 +88,10 @@ public class Robot extends TimedRobot {
     double speedR = (RobotContainer.controller.getRightX()*-.8)/(Math.abs(speed1)*2+1);
     //boolean armSpeed = RobotContainer.controller.getAButtonPressed();
     RobotContainer.m_driveSubsystem.drive(speed1, speedR);
-    RobotContainer.m_actuator.periodic();
-
-    //RobotContainer.m_
+    if (RobotContainer.controller.getXButtonPressed()) RobotContainer.m_launcherSubsystem.Load();
+    if (RobotContainer.controller.getRightBumperPressed()) RobotContainer.m_launcherSubsystem.SpeakerLaunch();
+    if (RobotContainer.controller.getLeftBumperPressed()) RobotContainer.m_launcherSubsystem.AmpLaunch();
   }
-
   /** This function is called once when the robot is disabled. */
   @Override
   public void disabledInit() {}
@@ -111,10 +111,8 @@ public class Robot extends TimedRobot {
     //double turn = RobotContainer.controller.getRightX();
     //RobotContainer.m_driveSubsystem.drive(speed, turn);
     double speed1 = RobotContainer.controller.getLeftY()*.9;
-    double speedR = (RobotContainer.controller.getRightX()*-.8)/(Math.abs(speed1)*2+1);
+    double speedR = (RobotContainer.controller.getRightX()*.8)/*/(Math.abs(speed1)*2+1)*/;
     RobotContainer.m_driveSubsystem.drive(speed1, speedR); 
-    
-    RobotContainer.m_actuator.periodic();
   }
   
   /** This function is called once when the robot is first started up. */

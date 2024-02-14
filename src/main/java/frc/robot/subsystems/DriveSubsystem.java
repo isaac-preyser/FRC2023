@@ -18,7 +18,6 @@ import frc.robot.RobotContainer;
 public class DriveSubsystem extends SubsystemBase {
     /*create a new DriveSubsytem*/
 
-
     //construct new spark objects 
     Spark s_leftFront = new Spark(Constants.pwmLeftFront);
     Spark s_leftBack = new Spark(Constants.pwmLeftBack);
@@ -34,13 +33,8 @@ public class DriveSubsystem extends SubsystemBase {
     DifferentialDrive diffDrive = new DifferentialDrive(leftMotors, rightMotors);
 
     //values of joystick inputs 
-
     double leftJoy = 0;
     double rightJoy = 0;
-
-     
-    
-    
 
     public DriveSubsystem() {
         //code here
@@ -51,8 +45,7 @@ public class DriveSubsystem extends SubsystemBase {
     }
 
     public void drive(double speed, double turn) {
-        rightMotors.set(speed);
-        leftMotors.set(speed*-turn);
+        diffDrive.arcadeDrive(speed, turn);
         leftJoy = RobotContainer.controller.getLeftY(); //set the value of the joystick to the Y-axis of the left joystick
         rightJoy = RobotContainer.controller.getRightX(); //set the value of the joystick to the X-axis of the right joystick. 
         
